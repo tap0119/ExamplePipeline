@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="shortcut icon" href="http://localhost:8080/static/logo2.png" />
+    <meta charset='utf-8'>
+    <title>Logged in</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script>
+	function fetchUserdata(){
+		let xhr = new XMLHttpRequest();
+		xhr.responseType = 'text';
+		
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				
+				let data = JSON.parse(xhr.responseText);
+				console.log(data);	
+				
+				//add name to the DOM 
+				var name = document.getElementById('name');
+				
+				name.innerHTML = "Welcome Mananger " + 
+				data.esr_firstname + " " + data.esr_lastname;
+			}
+		}
+		xhr.open("GET", "http://localhost:8080/Project1/WebCurrentUserdata");
+		xhr.send(""); //return all results for current user
+		
+	}
+
+	window.onload=function(){//run the above function every time page loads
+		fetchUserdata();
+	}
+	
+	</script>
+</head>
+
+<body style="background-color:#FFF3F1">
+    <div class="jumbotron" style="background-color:#903030">
+    <div class="row">
+    <div class="col-lg-10">
+        <h1 style="color:white" id='name'>Welcome Mananger </h1>
+        <p class="lead" style="color:white;font-size:150%">Please select an option</p>
+    </div>
+        <div class="col-lg-2">
+            <img width="140px" src="http://localhost:8080/static/logo.png" />
+        </div>
+        </div>
+    </div>
+    <div class="container">
+    <div class="row">
+            <div class="col-4">
+	            <form class="form-horizontal" action="http://localhost:8080/Project1/mananger/manApproveDeny.html" method="post">
+	                    <button type="submit" class="btn btn-dark" 
+	                     style="background-color:#903030;font-size:130%;width:350px;height:75px">Approve or deny reimbursments</button>
+	            </form>
+            <br>
+            <form class="form-horizontal" action="http://localhost:8080/Project1/mananger/manViewAll.html" method="post">
+                    <button type="submit" class="btn btn-dark" 
+                   style="background-color:#903030;font-size:130%;width:350px;height:75px">View all reimbursments</button>
+
+            </form>
+            </div>
+            <br>
+            <div class="col-4">
+            	<form class="form-horizontal" action="http://localhost:8080/Project1/mananger/manCreateUser.html" method="post">
+                    <button type="submit" class="btn btn-dark" 
+                   style="background-color:#903030;font-size:130%;width:350px;height:75px">Create a new user account</button>
+  
+ 	           </form>
+            <br>
+         	   <form class="form-horizontal" action="http://localhost:8080/Project1/WebLogout" method="post">
+                    <button type="submit" class="btn btn-dark" 
+                    style="background-color:#903030;font-size:130%;width:350px;height:75px">Logout</button>
+            	</form>
+            </div>
+       </div><!-- End of row -->
+            <br>
+            <br>
+            
+    </div>
+</body>
+
+</html>

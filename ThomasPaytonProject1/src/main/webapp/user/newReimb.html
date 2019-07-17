@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="http://localhost:8080/static/logo2.png" />
+    <meta charset='utf-8'>
+    <title>Submit a new reimbursment</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script></script>
+</head>
+<body style="background-color:aliceblue">
+	<div class="navbar navbar-expand-lg navbar-dark default-color" style="background-color:#303080">
+	  <h1 style="color:white">Submit a new reimbursment</h1>
+	   	<p class="lead" style="color:white;font-size:150%"></p>
+	  </div>
+	  <br><br>
+    <div class="container">
+      <form class="form-group" action="../WebNewReimb" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="control-label" style="font-size:130%;color:#303030">Amount:</label>
+                <div class="row">
+                <label class="control-label col-lg-1" style="font-size:130%;color:#303030">$</label>
+                    <input type="number" class="form-control col-lg-10" name="amount" id="amount" placeholder="Enter to nearest dollar amount" required>
+                </div>
+                <br>
+            
+                <label class="control-label" style="font-size:130%;color:#303030">Description:</label>
+                <div>
+                    <textarea class="form-control col-lg-11" rows="3" maxlength="250"
+                     name="description" id="description"  placeholder="Description, max length 250 characters" required></textarea>
+                </div>
+            </div>
+            <br>
+            <div class="col-lg-6">
+                <label class="control-label" style="font-size:130%;color:#303030">Type of cost:</label>
+                <select class="form-control" name="type" id="type" required>
+                    <option selected disabled>--Select--</option>
+                    <option value="1">Lodging</option>
+                    <option value="2">Travel</option>
+                    <option value="3">Food</option>
+                    <option value="4">Other</option>
+                </select>
+                <br>
+                
+                <label class="control-label" style="font-size:130%;color:#303030">Receipt:</label>
+                <br>
+                <input type="file" class="btn" style="color:#303030" name="file" id="file" accept="image/*" required/>
+                
+            </div>
+            <br>
+        </div>
+            <br>
+            <div>
+            
+                <button type="submit" class="btn btn-dark" style="background-color:#303090">Submit</button>
+                <button type="submit" class="btn btn-dark" style="background-color:#303090" 
+			     onclick="window.location.href = 'http://localhost:8080/Project1/user/home.html';">Back</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

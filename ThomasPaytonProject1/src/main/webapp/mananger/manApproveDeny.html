@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="http://localhost:8080/static/logo2.png" />
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<title>Approve or deny reimbursments</title>
+<script src="../JS/populateTable.js"></script>
+<script >
+
+//select all pending reimb
+function fetchReimbSelect(){
+	  
+	let xhr = new XMLHttpRequest();
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			let data = JSON.parse(xhr.responseText);
+
+			console.log(data);
+			
+			for(var i = 0; i < data.length; i++) {
+				//add to dropdown list
+				option = document.createElement("option");
+				option.setAttribute("value", data[i].reimd_id);
+				
+				//if the discription is too long to fit add ... at the end
+				if (data[i].reimb_description.length > 40){
+					var dots = "..."
+				}else{
+					var dots =""
+				}
+				
+				//add option inner html
+				option.innerHTML= 
+				"ID: " + data[i].reimd_id
+				+ "  -   Submitter ID: " + data[i].reimb_author
+				+ "  -  Amount: $" + data[i].reimb_amount 
+				+ ".00  -  Description: " + data[i].reimb_description.substring(0,40) + dots;
+				
+				document.getElementById("reimbList").appendChild(option);
+			}//end of populating list
+			
+			
+			populateTable(data);
+			
+		}
+	}
+	xhr.open("POST", "http://localhost:8080/Project1/WebViewSelect");
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.send("type=0&status=1&uid=0");
+}
+
+window.onload=function(){//run the above function every time page loads
+	fetchReimbSelect();
+}
+
+</script>
+</head>
+<body style="background-color:#FFF3F1">
+	<div class="navbar navbar-expand-lg navbar-dark default-color" style="background-color:#903030">
+	  <h1 style="color:white">Approve or deny reimbursments</h1>
+	   	<p class="lead" style="color:white;font-size:150%"></p>
+	  </div>
+	  <br>
+	  <br>
+	
+	<div class="container">
+			<label style="font-size:150%;color:#903030">Approve or deny:</label>
+		<form class="form-group" action="../WebApproveDeny">
+		<div class="row">
+			<div class="col-lg-8">
+				<select class="form-control" id=reimbList name=reimbList required>
+					<option value="0" selected disabled>Select reimbursment</option>
+				</select>
+			</div>
+			<br>
+			<div class="col-lg-3">
+				<select class="form-control" name="ad" id="ad" required>
+					<option value="0" selected disabled>Select action</option>
+					<option value="2">Approve</option>
+					<option value="3">Deny</option>
+				</select>
+			</div>
+			<div class="col-lg-1">
+				<button type="Submit" class="btn btn-dark" 
+				style="background-color:#903030"> Submit </button>
+			</div>
+		</div>
+		</form>
+		<br>
+    <label style="font-size:150%;color:#903030">All pending reimbursments:</label>
+	  <table class="table table-hover" style='width:100%;font-size:120%' id='tab'>
+	  <!-- Append here -->
+	  </table>
+	  <hr>
+	  
+	  <p id="removeMe" style="color:#303030;font-size:130%">Loading your table...</p>
+
+		<br>
+	    <button type="submit" class="btn btn-dark" 
+	     style="background-color:#903030" 
+	     onclick="window.location.href = 'http://localhost:8080/Project1/mananger/manHome.html';"> Back </button>
+
+	</div>
+    
+</body>
+</html>

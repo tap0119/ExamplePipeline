@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="http://localhost:8080/static/logo2.png" />
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<title>View your own Reimbursments</title>
+<script src="../JS/populateTable.js"></script>
+<script>
+let input = document.getElementById('tab');
+
+function fetchReimbList(){
+	let xhr = new XMLHttpRequest();
+	xhr.responseType = 'text';
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			let data = JSON.parse(xhr.responseText);
+			console.log(data);	
+			populateTable(data);
+		}
+	}
+	xhr.open("POST", "http://localhost:8080/Project1/WebViewOwn");
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.send("type=0&status=0"); //return all results for current user
+	
+}
+
+window.onload=function(){//run the above function every time page loads
+	fetchReimbList();
+}//--------------------
+
+function fetchReimbSelect(){
+    var removeMe = document.getElementById('removeMe');
+    
+	removeMe.innerHTML = "Loading your table...";
+	
+	var type = document.getElementById("type").value;
+	var status = document.getElementById("status").value;
+	var par = "type=" + type + "&status=" + status;
+	console.log(par);
+	tab.innerHTML="";
+	  
+	let xhr = new XMLHttpRequest();
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			let data = JSON.parse(xhr.responseText);
+			
+			populateTable(data);
+		}
+	}
+	xhr.open("POST", "http://localhost:8080/Project1/WebViewOwn");
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.send(par);
+}
+
+
+
+</script>
+</head>
+<body style="background-color:aliceblue">
+	<div class="navbar navbar-expand-lg navbar-dark default-color" style="background-color:#303090">
+	  <h1 style="color:white">Your submitted reimbursments</h1>
+	   	<p class="lead" style="color:white;font-size:130%"></p>
+	  </div>
+	  <br>
+	  <br>
+	  	<div class="container">
+			<label style="font-size:150%;color:#303090">Filter results:</label>
+		<div class="row">
+				<div class="col-lg-5">
+					<label style="font-size:130%;color:#303090">Type of cost:</label>
+				</div>
+				<div class="col-lg-7">
+					<label style="font-size:130%;color:#303090">Current Status:</label>
+				</div>
+		</div>
+			<form class="form-group" onsubmit="fetchReimbSelect();">
+		<div class="row">
+			<div class="col-lg-5">
+			<select class="form-control" name="type" id="type">
+				<option value="0" selected>Any</option>
+				<option value="1">Lodging</option>
+				<option value="2">Travel</option>
+				<option value="3">Food</option>
+				<option value="4">Other</option>
+			</select>
+			</div>
+			<br>
+			<div class="col-lg-6">
+			<select class="form-control" name="status" id="status">
+				<option value="0" selected>Any</option>
+				<option value="1">Pending</option>
+				<option value="2">Approved</option>
+				<option value="3">Denied</option>
+			</select>
+			</div>
+
+		<br>
+		<div class="col-lg-1">
+		<button type="button" class="btn btn-dark" 
+		style="background-color:#303090" onClick="fetchReimbSelect()"> Submit </button>
+		</div>
+		</div><!-- End of row -->
+		</form>
+	
+	  <table class="table table-hover" style='width:100%;font-size:120%' id='tab'>
+	  <!-- Append here -->
+	  </table>
+	  <hr>
+	  <p id="removeMe" style="color:#303030;font-size:150%">Loading your table...</p>
+	  <div class="col-sm-11">
+	    <button type="submit" class="btn btn-dark" 
+	     style="background-color:#303090" 
+	     onclick="window.location.href = 'http://localhost:8080/Project1/user/home.html';"> Back </button>
+	   </div>
+	</div>
+	<br>
+    
+</body>
+</html>

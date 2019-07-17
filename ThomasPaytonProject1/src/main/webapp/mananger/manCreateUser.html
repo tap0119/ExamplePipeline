@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="http://localhost:8080/static/logo2.png" />
+    <meta charset='utf-8'>
+    <title>Create a new user</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script></script>
+</head>
+<body style="background-color:#FFF3F1">
+	<div class="navbar navbar-expand-lg navbar-dark default-color" style="background-color:#903030">
+	  <h1 style="color:white">Create a new user</h1>
+	   	<p class="lead" style="color:white;font-size:150%"></p>
+	  </div>
+	  <br><br>
+    <div class="container">
+      <form class="form-group" action="../WebCreateUser" method="post" >
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="control-label" style="font-size:130%;color:#303030">Account Name:</label>
+                <input type="text" class="form-control col-lg-10" name="username" id="username" placeholder="Username" required>
+                <br>
+                <label class="control-label" style="font-size:130%;color:#303030">Password:</label>
+                <input type="password" class="form-control col-lg-10" name="password" id="password" placeholder="Password" required>
+                <br>
+                <label class="control-label" style="font-size:130%;color:#303030">Email:</label>
+                <input type="text" class="form-control col-lg-10" name="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="col-lg-6">
+                <label class="control-label" style="font-size:130%;color:#303030">First Name:</label>
+                <input type="text" class="form-control col-lg-10" name="firstname" id="firstname" placeholder="First Name" required>
+                <br>
+                <label class="control-label" style="font-size:130%;color:#303030">Last Name:</label>
+                <input type="text" class="form-control col-lg-10" name="lastname" id="lastname" placeholder="Last Name" required>
+                <br>
+                <label class="control-label " style="font-size:130%;color:#303030">Type of user:</label>
+                <select class="form-control col-lg-10" name="role" id="role" required>
+                    <option selected disabled>--Select--</option>
+                    <option value="1">Normal User</option>
+                    <option value="2">Mananger</option>
+                </select>
+            </div>
+            <br>
+        </div>
+            <br>
+            <div>
+            
+                <button type="submit" class="btn btn-dark" style="background-color:#903030">Submit</button>
+                <button type="submit" class="btn btn-dark" 
+	     style="background-color:#903030" 
+	     onclick="window.location.href = 'http://localhost:8080/Project1/mananger/manHome.html';">Back</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

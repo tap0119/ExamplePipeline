@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>ThomasPaytonProject1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description>Servlet to login</description>
+    <servlet-name>WebLogin</servlet-name>
+    <servlet-class>web.WebLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebLogin</servlet-name>
+    <url-pattern>/WebLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>View your own reimb</description>
+    <display-name>WebViewOwn</display-name>
+    <servlet-name>WebViewOwn</servlet-name>
+    <servlet-class>web.WebViewOwn</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebViewOwn</servlet-name>
+    <url-pattern>/WebViewOwn</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Submit a new reimb</description>
+    <display-name>WebNewReimb</display-name>
+    <servlet-name>WebNewReimb</servlet-name>
+    <servlet-class>web.WebNewReimb</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebNewReimb</servlet-name>
+    <url-pattern>/WebNewReimb</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Logout servlet</description>
+    <display-name>WebLogout</display-name>
+    <servlet-name>WebLogout</servlet-name>
+    <servlet-class>web.WebLogout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebLogout</servlet-name>
+    <url-pattern>/WebLogout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>View selected reimb</description>
+    <display-name>WebViewSelect</display-name>
+    <servlet-name>WebViewSelect</servlet-name>
+    <servlet-class>web.WebViewSelect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebViewSelect</servlet-name>
+    <url-pattern>/WebViewSelect</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Mananger approve or deny reimb</description>
+    <display-name>WebApproveDeny</display-name>
+    <servlet-name>WebApproveDeny</servlet-name>
+    <servlet-class>web.WebApproveDeny</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebApproveDeny</servlet-name>
+    <url-pattern>/WebApproveDeny</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Select all users</description>
+    <display-name>WebAllUsers</display-name>
+    <servlet-name>WebAllUsers</servlet-name>
+    <servlet-class>web.WebAllUsers</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebAllUsers</servlet-name>
+    <url-pattern>/WebAllUsers</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Mananger create a new user</description>
+    <display-name>WebCreateUser</display-name>
+    <servlet-name>WebCreateUser</servlet-name>
+    <servlet-class>web.WebCreateUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebCreateUser</servlet-name>
+    <url-pattern>/WebCreateUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WebCurrentUserdata</display-name>
+    <servlet-name>WebCurrentUserdata</servlet-name>
+    <servlet-class>web.WebCurrentUserdata</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebCurrentUserdata</servlet-name>
+    <url-pattern>/WebCurrentUserdata</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>FilterUser</display-name>
+    <filter-name>FilterUser</filter-name>
+    <filter-class>web.FilterUser</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterUser</filter-name>
+    <url-pattern>/user/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>FilterMan</display-name>
+    <filter-name>FilterMan</filter-name>
+    <filter-class>web.FilterMan</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterMan</filter-name>
+    <url-pattern>/mananger/*</url-pattern>
+  </filter-mapping>
+</web-app>

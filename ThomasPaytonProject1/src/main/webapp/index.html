@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="shortcut icon" href="http://localhost:8080/static/logo2.png" />
+    <meta charset='utf-8'>
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body style="background-color:#E5E4E2">
+    <div class="jumbotron" style="background-color:#303030">
+    <div class="row">
+    <div class="col-lg-10">
+        <h1 style="color:white">Welcome to Employee Reimbursment System</h1>
+        <p class="lead" style="color:white;font-size:150%">Please enter your login</p>
+    </div>
+        <div class="col-lg-2">
+            <img width="140px" src="http://localhost:8080/static/logo.png" />
+        </div>
+    </div>
+    </div>
+    <div class="container">
+                <form class="form-horizontal" action="WebLogin" method="post">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="username" 
+                        style="font-size:130%;color:#303030">Username:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="username" 
+                            placeholder="Enter username" required>
+                        </div>
+                        
+                        <br>
+                        <label class="control-label col-sm-2" for="password" 
+                        style="font-size:130%;color:#303030">Password:</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" 
+                            placeholder="Enter password" required>
+                        </div>
+                        
+                        <br>
+                        <div class="col-sm-offset-2 col-sm-11">
+                            <button type="submit" class="btn btn-dark" 
+                            style="background-color:#303030">Submit</button>
+                        </div>
+                    
+                    </div>
+                </form>
+            </div>
+</body>
+
+</html>
